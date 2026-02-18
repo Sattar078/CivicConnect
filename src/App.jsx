@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import LoginCivilian from './pages/LoginCivilian'
@@ -31,8 +31,20 @@ import MyTasks from './pages/MyTasks'
 import MapView from './pages/MapView'
 import BroadcastAlert from './pages/BroadcastAlert'
 import ComplaintDetails from './pages/ComplaintDetails'
+import UpdateStatus from './pages/UpdateStatus'
+import CivilianProfile from './pages/CivilianProfile'
+import OfficerProfile from './pages/OfficerProfile'
+import AdminProfile from './pages/AdminProfile'
 
 const App = () => {
+  useEffect(() => {
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [])
+
   return (
     <BrowserRouter>
       <Routes>
@@ -67,6 +79,10 @@ const App = () => {
         <Route path="/map-view" element={<MapView />} />
         <Route path="/broadcast-alert" element={<BroadcastAlert />} />
         <Route path="/complaint-details/:id" element={<ComplaintDetails />} />
+        <Route path="/update-status/:id" element={<UpdateStatus />} />
+        <Route path="/civilian-profile" element={<CivilianProfile />} />
+        <Route path="/officer-profile" element={<OfficerProfile />} />
+        <Route path="/admin-profile" element={<AdminProfile />} />
       </Routes>
     </BrowserRouter>
   )

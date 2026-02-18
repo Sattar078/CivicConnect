@@ -11,10 +11,10 @@ const Navbar = ({ onOpenDashboard }) => {
   };
 
   return (
-    <div className='w-full h-20 bg-gradient-to-r from-green-600 to-green-400 text-white flex items-center justify-between px-4 shadow-lg'>
+    <div className='w-full h-16 md:h-20 bg-gradient-to-r from-green-600 to-green-400 dark:from-green-900 dark:to-green-800 text-white flex items-center justify-between px-4 md:px-8 shadow-lg transition-colors duration-300 z-40 relative'>
         
-            <div className='py-4 px-6 w-2/5 flex items-center justify-center '> <Link to="/"><h1 className='text-4xl font-bold text-white'>CivicConnect</h1></Link></div>
-            <div className='py-4 px-6 w-2/5 flex items-center justify-center gap-4 '>
+            <div className='flex items-center'> <Link to="/"><h1 className='text-xl md:text-3xl font-bold text-white tracking-tight'>CivicConnect</h1></Link></div>
+            <div className='flex items-center gap-2 md:gap-4'>
             {role === 'admin' && (
             <button onClick={onOpenDashboard} className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition text-white" title="Admin Dashboard">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -41,6 +41,13 @@ const Navbar = ({ onOpenDashboard }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
             </Link>
+            {role && (
+              <Link to={role === 'admin' ? '/admin-profile' : role === 'officer' ? '/officer-profile' : '/civilian-profile'} className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition text-white" title="My Profile">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </Link>
+            )}
             <button onClick={handleLogout} className="bg-white/20 p-2 rounded-full hover:bg-red-500 transition text-white" title="Logout">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />

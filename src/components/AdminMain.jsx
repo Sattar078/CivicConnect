@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom'
 
 const AdminMain = ({ onOpenDashboard }) => {
   return (
-    <div className="w-full">
-      <section className="bg-green-50 min-h-[90vh] flex items-center justify-center px-6">
+    <div className="w-full dark:bg-gray-900 transition-colors duration-300">
+      <section className="bg-green-50 dark:bg-gray-900 min-h-[90vh] flex items-center justify-center px-6 transition-colors duration-300">
         <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10 items-center">
           
           <div className="space-y-6 animate-fadeIn">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white leading-tight">
               Welcome, <span className="text-green-600">Admin</span>
             </h1>
 
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 dark:text-gray-300 text-lg">
               Oversee municipal operations, manage officer assignments, and ensure efficient complaint resolution.
             </p>
 
@@ -22,36 +22,36 @@ const AdminMain = ({ onOpenDashboard }) => {
               </button>
             </div>
 
-            <div className="flex gap-8 pt-6 border-t border-green-200 mt-6">
+            <div className="flex gap-8 pt-6 border-t border-green-200 dark:border-gray-700 mt-6">
               <Link to="/team-overview" className="hover:opacity-75 transition">
                 <h3 className="text-2xl font-bold text-green-600">150+</h3>
-                <p className="text-gray-500 text-sm">Active Staff</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm">Active Staff</p>
               </Link>
               <Link to="/reports" className="hover:opacity-75 transition">
                 <h3 className="text-2xl font-bold text-green-600">98%</h3>
-                <p className="text-gray-500 text-sm">Resolution Rate</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm">Resolution Rate</p>
               </Link>
               <Link to="/manage-officers" className="hover:opacity-75 transition">
                 <h3 className="text-2xl font-bold text-green-600">50+</h3>
-                <p className="text-gray-500 text-sm">Zones Managed</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm">Zones Managed</p>
               </Link>
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl p-8 shadow-lg relative overflow-hidden">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg relative overflow-hidden transition-colors duration-300">
             <Link to="/system-status">
-              <div className="bg-green-50 p-6 rounded-2xl shadow-md mb-4 hover:shadow-lg transition cursor-pointer">
-                <h4 className="font-semibold text-gray-800">System Status</h4>
-                <p className="text-gray-500 text-sm mt-1">
+              <div className="bg-green-50 dark:bg-gray-700 p-6 rounded-2xl shadow-md mb-4 hover:shadow-lg transition cursor-pointer">
+                <h4 className="font-semibold text-gray-800 dark:text-white">System Status</h4>
+                <p className="text-gray-500 dark:text-gray-300 text-sm mt-1">
                   All systems operational. 154 active complaints.
                 </p>
               </div>
             </Link>
 
             <Link to="/team-overview">
-              <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-lg transition cursor-pointer">
-                <h4 className="font-semibold text-gray-800">Team Overview</h4>
-                <p className="text-gray-500 text-sm mt-1">
+              <div className="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-600 hover:shadow-lg transition cursor-pointer">
+                <h4 className="font-semibold text-gray-800 dark:text-white">Team Overview</h4>
+                <p className="text-gray-500 dark:text-gray-300 text-sm mt-1">
                   12 Active Officers currently on duty.
                 </p>
               </div>
@@ -64,37 +64,37 @@ const AdminMain = ({ onOpenDashboard }) => {
       </section>
 
       {/* Quick Actions Section */}
-      <section className="bg-white py-16 px-6">
+      <section className="bg-white dark:bg-gray-900 py-16 px-6 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Quick Actions</h2>
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">Quick Actions</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <Link to="/manage-officers">
-              <div className="p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer text-center group h-full">
+              <div className="p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition cursor-pointer text-center group h-full dark:bg-gray-800">
                 <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-green-600 group-hover:text-white transition">
                   👥
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Manage Officers</h3>
-                <p className="text-gray-600">Add, remove, or update municipal officer details and assignments.</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">Manage Officers</h3>
+                <p className="text-gray-600 dark:text-gray-300">Add, remove, or update municipal officer details and assignments.</p>
               </div>
             </Link>
 
             <Link to="/reports">
-              <div className="p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer text-center group h-full">
+              <div className="p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition cursor-pointer text-center group h-full dark:bg-gray-800">
                 <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-green-600 group-hover:text-white transition">
                   📊
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">View Reports</h3>
-                <p className="text-gray-600">Analyze complaint trends, resolution rates, and officer performance.</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">View Reports</h3>
+                <p className="text-gray-600 dark:text-gray-300">Analyze complaint trends, resolution rates, and officer performance.</p>
               </div>
             </Link>
 
             <Link to="/system-settings">
-              <div className="p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer text-center group h-full">
+              <div className="p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition cursor-pointer text-center group h-full dark:bg-gray-800">
                 <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-green-600 group-hover:text-white transition">
                   ⚙️
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">System Settings</h3>
-                <p className="text-gray-600">Configure platform settings, notifications, and access controls.</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">System Settings</h3>
+                <p className="text-gray-600 dark:text-gray-300">Configure platform settings, notifications, and access controls.</p>
               </div>
             </Link>
           </div>
@@ -102,24 +102,24 @@ const AdminMain = ({ onOpenDashboard }) => {
       </section>
 
       {/* System Health Section */}
-      <section className="bg-green-50 py-16 px-6">
+      <section className="bg-green-50 dark:bg-gray-800 py-16 px-6 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">System Health</h2>
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-12 text-center">System Health</h2>
           <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-              <p className="text-gray-500 text-sm mb-1">Server Status</p>
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm text-center">
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">Server Status</p>
               <p className="text-green-600 font-bold text-lg">● Online</p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-              <p className="text-gray-500 text-sm mb-1">Database Load</p>
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm text-center">
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">Database Load</p>
               <p className="text-blue-600 font-bold text-lg">Normal (12%)</p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-              <p className="text-gray-500 text-sm mb-1">Last Backup</p>
-              <p className="text-gray-800 font-bold text-lg">2 Hours Ago</p>
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm text-center">
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">Last Backup</p>
+              <p className="text-gray-800 dark:text-white font-bold text-lg">2 Hours Ago</p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-              <p className="text-gray-500 text-sm mb-1">Active Sessions</p>
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm text-center">
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">Active Sessions</p>
               <p className="text-green-600 font-bold text-lg">45 Users</p>
             </div>
           </div>
@@ -127,36 +127,36 @@ const AdminMain = ({ onOpenDashboard }) => {
       </section>
 
       {/* Recent System Logs Section */}
-      <section className="bg-white py-16 px-6 border-t border-gray-100">
+      <section className="bg-white dark:bg-gray-900 py-16 px-6 border-t border-gray-100 dark:border-gray-700 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Recent System Logs</h2>
-          <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">Recent System Logs</h2>
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
             <ul className="space-y-4">
-              <li className="flex items-center justify-between border-b border-gray-200 pb-3 last:border-0 last:pb-0">
+              <li className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 pb-3 last:border-0 last:pb-0">
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                  <p className="text-gray-700 font-medium">System Backup Completed</p>
+                  <p className="text-gray-700 dark:text-gray-300 font-medium">System Backup Completed</p>
                 </div>
                 <span className="text-sm text-gray-500">2 hours ago</span>
               </li>
-              <li className="flex items-center justify-between border-b border-gray-200 pb-3 last:border-0 last:pb-0">
+              <li className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 pb-3 last:border-0 last:pb-0">
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                  <p className="text-gray-700 font-medium">New Officer Account Created (ID: OFF-108)</p>
+                  <p className="text-gray-700 dark:text-gray-300 font-medium">New Officer Account Created (ID: OFF-108)</p>
                 </div>
                 <span className="text-sm text-gray-500">5 hours ago</span>
               </li>
-              <li className="flex items-center justify-between border-b border-gray-200 pb-3 last:border-0 last:pb-0">
+              <li className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 pb-3 last:border-0 last:pb-0">
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
-                  <p className="text-gray-700 font-medium">High Load Warning: Database CPU &gt; 80%</p>
+                  <p className="text-gray-700 dark:text-gray-300 font-medium">High Load Warning: Database CPU &gt; 80%</p>
                 </div>
                 <span className="text-sm text-gray-500">Yesterday</span>
               </li>
-               <li className="flex items-center justify-between border-b border-gray-200 pb-3 last:border-0 last:pb-0">
+               <li className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 pb-3 last:border-0 last:pb-0">
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                  <p className="text-gray-700 font-medium">Admin Login: SuperAdmin</p>
+                  <p className="text-gray-700 dark:text-gray-300 font-medium">Admin Login: SuperAdmin</p>
                 </div>
                 <span className="text-sm text-gray-500">Yesterday</span>
               </li>
