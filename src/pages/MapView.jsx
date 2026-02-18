@@ -7,7 +7,7 @@ const MapView = () => {
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
 
   return (
-    <div className="min-h-screen w-full bg-green-50">
+    <div className="min-h-screen w-full bg-green-50 [@media(display-mode:standalone)]:pb-24">
       <Navbar onOpenDashboard={() => setIsDashboardOpen(true)} />
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-8 md:py-12">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8">Complaint Map View</h1>

@@ -45,7 +45,7 @@ const CivilianProfile = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-green-50 dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen w-full bg-green-50 dark:bg-gray-900 transition-colors duration-300 [@media(display-mode:standalone)]:pb-24">
       <Navbar onOpenDashboard={() => setIsDashboardOpen(true)} />
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-8">My Profile</h1>

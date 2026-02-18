@@ -44,6 +44,9 @@ const LandingPage = () => {
         
         {/* Left Side - Visual */}
         <div className="md:w-1/2 bg-gradient-to-br from-green-600 to-green-400 p-10 text-white flex flex-col justify-center relative overflow-hidden">
+          <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6 shadow-xl border-2 border-white/30 relative z-10 p-4">
+            <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 relative z-10">CivicConnect</h1>
           <p className="text-lg opacity-90 mb-8 relative z-10">
             Empowering citizens, enabling authorities. Join us in building a smarter, safer community.

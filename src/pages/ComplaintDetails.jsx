@@ -30,7 +30,7 @@ const ComplaintDetails = () => {
   if (!complaint) return <div className="min-h-screen flex items-center justify-center bg-green-50 text-red-600 font-bold text-xl">Complaint Not Found</div>;
 
   return (
-    <div className="min-h-screen w-full bg-green-50 dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen w-full bg-green-50 dark:bg-gray-900 transition-colors duration-300 [@media(display-mode:standalone)]:pb-24">
       <Navbar onOpenDashboard={() => setIsDashboardOpen(true)} />
       <div className="max-w-5xl mx-auto px-4 md:px-8 py-8 md:py-12">
         <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 mb-6 transition font-medium">

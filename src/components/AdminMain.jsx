@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const AdminMain = ({ onOpenDashboard }) => {
   return (
-    <div className="w-full dark:bg-gray-900 transition-colors duration-300">
+    <div className="w-full dark:bg-gray-900 transition-colors duration-300 [@media(display-mode:standalone)]:pb-24">
       <section className="bg-green-50 dark:bg-gray-900 min-h-[90vh] flex items-center justify-center px-6 transition-colors duration-300">
         <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10 items-center">
           

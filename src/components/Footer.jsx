@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white pt-10 md:pt-16 pb-8 border-t-4 border-green-600 dark:border-green-800 transition-colors duration-300">
+    <footer className="bg-gray-900 dark:bg-black text-white pt-10 md:pt-16 pb-8 border-t-4 border-green-600 dark:border-green-800 transition-colors duration-300 [@media(display-mode:standalone)]:hidden">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12">
         
         {/* Brand Section */}
         <div className="col-span-1 md:col-span-1">
           <h2 className="text-3xl font-bold text-white mb-4 flex items-center gap-2">
-            <span className="text-green-500">🏛️</span> CivicConnect
+            <img src="/logo.png" alt="Logo" className="w-10 h-10 rounded-lg" /> CivicConnect
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-6">
             An official initiative to empower citizens, ensure transparency, and resolve civic issues efficiently. 
@@ -38,10 +38,10 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-6 border-b-2 border-green-500 inline-block pb-1">Government</h3>
           <ul className="space-y-3 text-gray-300 text-sm">
-            <li><a href="#" className="hover:text-green-400 transition flex items-center gap-2">› National Portal of India</a></li>
-            <li><a href="#" className="hover:text-green-400 transition flex items-center gap-2">› Digital India</a></li>
-            <li><a href="#" className="hover:text-green-400 transition flex items-center gap-2">› Ministry of Urban Affairs</a></li>
-            <li><a href="#" className="hover:text-green-400 transition flex items-center gap-2">› MyGov Platform</a></li>
+            <li><a href="https://www.india.gov.in/" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition flex items-center gap-2">› National Portal of India</a></li>
+            <li><a href="https://www.digitalindia.gov.in/" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition flex items-center gap-2">› Digital India</a></li>
+            <li><a href="https://mohua.gov.in/" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition flex items-center gap-2">› Ministry of Urban Affairs</a></li>
+            <li><a href="https://www.mygov.in/" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition flex items-center gap-2">› MyGov Platform</a></li>
           </ul>
         </div>
 

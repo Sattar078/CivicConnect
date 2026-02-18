@@ -35,6 +35,8 @@ import UpdateStatus from './pages/UpdateStatus'
 import CivilianProfile from './pages/CivilianProfile'
 import OfficerProfile from './pages/OfficerProfile'
 import AdminProfile from './pages/AdminProfile'
+import UpdateNotification from './components/UpdateNotification'
+import InstallPWA from './components/InstallPWA'
 
 const App = () => {
   useEffect(() => {
@@ -84,6 +86,8 @@ const App = () => {
         <Route path="/officer-profile" element={<OfficerProfile />} />
         <Route path="/admin-profile" element={<AdminProfile />} />
       </Routes>
+      <UpdateNotification />
+      <InstallPWA />
     </BrowserRouter>
   )
 }

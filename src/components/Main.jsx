@@ -1,9 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const Main = ({ onOpenComplaint }) => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      url: "https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1000&auto=format&fit=crop",
+      title: "Report Issues Instantly",
+      subtitle: "Snap a photo, share location, and report."
+    },
+    {
+      url: "https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=1000&auto=format&fit=crop",
+      title: "Track Resolution",
+      subtitle: "Get real-time updates on your complaints."
+    },
+    {
+      url: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop",
+      title: "Better Community",
+      subtitle: "Join hands for a cleaner, safer city."
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [slides.length]);
 
   const recentComplaints = [
     {
@@ -54,7 +80,7 @@ const Main = ({ onOpenComplaint }) => {
   ];
 
  return (
-  <div className="w-full dark:bg-gray-900 transition-colors duration-300">
+  <div className="w-full dark:bg-gray-900 transition-colors duration-300 [@media(display-mode:standalone)]:pb-24">
   <section className="bg-white dark:bg-gray-900 min-h-[90vh] flex items-center justify-center px-4 md:px-6 transition-colors duration-300">
     <div className="max-w-6xl w-full grid md:grid-cols-2 gap-8 md:gap-12 items-center py-8 md:py-0">
       
@@ -102,30 +128,40 @@ const Main = ({ onOpenComplaint }) => {
       </div>
 
       {/* Right Visual Card */}
-      <div className="bg-green-50 dark:bg-gray-800 rounded-3xl p-8 shadow-lg relative overflow-hidden transition-colors duration-300">
+      <div className="bg-green-50 dark:bg-gray-800 rounded-3xl shadow-lg relative overflow-hidden transition-colors duration-300 h-[400px] md:h-[500px] group">
         
-        <div className="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-md mb-4 transition-colors duration-300">
-          <h4 className="font-semibold text-gray-800 dark:text-white">Road Maintenance Issue</h4>
-          <p className="text-gray-500 dark:text-gray-300 text-sm mt-1">
-            Pothole problem reported near City Center.
-          </p>
-          <span className="inline-block mt-3 px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">
-            Pending
-          </span>
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <img
+              src={slide.url}
+              alt={slide.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-8">
+              <h3 className="text-white text-2xl font-bold mb-2">{slide.title}</h3>
+              <p className="text-white/90 text-lg">{slide.subtitle}</p>
+            </div>
+          </div>
+        ))}
+        
+        {/* Indicators */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === currentSlide ? "w-8 bg-green-500" : "w-2 bg-white/60 hover:bg-white"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
-
-        <div className="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-md transition-colors duration-300">
-          <h4 className="font-semibold text-gray-800 dark:text-white">Water Supply Complaint</h4>
-          <p className="text-gray-500 dark:text-gray-300 text-sm mt-1">
-            Irregular water supply in Sector 12.
-          </p>
-          <span className="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">
-            Resolved
-          </span>
-        </div>
-
-        {/* Decorative Circle */}
-        <div className="absolute -top-10 -right-10 w-32 h-32 bg-green-200 rounded-full opacity-30"></div>
       </div>
 
     </div>
