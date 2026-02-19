@@ -27,7 +27,8 @@ const ComplaintSuccessModal = ({ onClose, details }) => {
             </div>
             <div className="border-t border-gray-200 dark:border-gray-600 pt-2 mt-2">
                 <span className="text-gray-500 dark:text-gray-400 text-sm block mb-1">Assigned Officer</span>
-                <span className="font-bold text-green-600">{details.officer}</span>
+                <span className="font-bold text-green-600 block">{details.officer}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300 mt-1 flex items-center gap-1">📞 {details.officerContact}</span>
             </div>
         </div>
 

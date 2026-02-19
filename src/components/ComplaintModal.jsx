@@ -10,6 +10,7 @@ const ComplaintModal = ({ onClose, onSubmit }) => {
       id: `#CC-${Math.floor(100000 + Math.random() * 900000)}`,
       date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
       officer: "Rajesh Kumar (Zone Officer)",
+      officerContact: "+91 98765 43210",
       category: categorySelect ? categorySelect.value : "General Issue"
     };
 

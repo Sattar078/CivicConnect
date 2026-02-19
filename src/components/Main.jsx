@@ -62,19 +62,19 @@ const Main = ({ onOpenComplaint }) => {
     {
       name: "Anjali Sharma",
       role: "Resident, Sector 21",
-      image: "https://randomuser.me/api/portraits/women/44.jpg",
+      image: "https://t3.ftcdn.net/jpg/02/42/15/52/360_F_242155243_TmXe26GFBHLlpUdAyKgrVVWhZlNPpbd8.jpg",
       quote: "CivicConnect made it so easy to report the broken street light outside my house. It was fixed within 48 hours!"
     },
     {
       name: "Rahul Verma",
       role: "Shop Owner",
-      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPoqY94v8cU92a4ZAX-0hVsB9oKYaLCnEP1g&s",
       quote: "I used to run around government offices for garbage collection issues. Now I just post a photo and it gets done. Amazing initiative!"
     },
     {
       name: "Priya Patel",
       role: "Student",
-      image: "https://randomuser.me/api/portraits/women/68.jpg",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9ZiOYx3SilPYKmYP8NLTN39yZLkrg8c3rEQ&s",
       quote: "The tracking feature is the best part. You actually know who is working on your complaint and when it will be resolved."
     }
   ];
