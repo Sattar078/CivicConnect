@@ -4,10 +4,14 @@ import { Link } from 'react-router-dom'
 const AdminMain = ({ onOpenDashboard }) => {
   return (
     <div className="w-full dark:bg-gray-900 transition-colors duration-300 [@media(display-mode:standalone)]:pb-24">
-      <section className="bg-green-50 dark:bg-gray-900 min-h-[90vh] flex items-center justify-center px-6 transition-colors duration-300">
+      <section className="bg-green-50 dark:bg-gray-900 py-12 md:py-20 flex items-center justify-center px-6 transition-colors duration-300">
         <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10 items-center">
           
           <div className="space-y-6 animate-fadeIn">
+            <div className="flex gap-3 mb-2">
+              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">v2.4.0 Stable</span>
+              <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">System Optimal</span>
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white leading-tight">
               Welcome, <span className="text-green-600">Admin</span>
             </h1>

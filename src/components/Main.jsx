@@ -128,7 +128,7 @@ const Main = ({ onOpenComplaint }) => {
       </div>
 
       {/* Right Visual Card */}
-      <div className="bg-green-50 dark:bg-gray-800 rounded-3xl shadow-lg relative overflow-hidden transition-colors duration-300 h-[400px] md:h-[500px] group">
+      <div className="bg-green-50 dark:bg-gray-800 rounded-3xl shadow-lg relative overflow-hidden transition-colors duration-300 h-100 md:h-125 group">
         
         {slides.map((slide, index) => (
           <div
@@ -299,22 +299,22 @@ const Main = ({ onOpenComplaint }) => {
 
   {/* Impact Statistics Section */}
   <section className="bg-green-50 dark:bg-gray-800 py-12 md:py-20 px-4 md:px-6 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-center">
-          <div className="w-48 h-48 mx-auto bg-green-600 rounded-full flex flex-col items-center justify-center text-white shadow-xl border-4 border-green-100 hover:scale-105 transition-transform">
-              <h3 className="text-4xl font-bold mb-1">10k+</h3>
-              <p className="text-green-100 text-sm">Complaints Registered</p>
+      <div className="max-w-6xl mx-auto flex flex-row justify-center items-center gap-3 md:gap-8 text-center">
+          <div className="w-20 h-20 md:w-48 md:h-48 bg-green-600 rounded-full flex flex-col items-center justify-center text-white shadow-xl border-2 md:border-4 border-green-100 hover:scale-105 transition-transform">
+              <h3 className="text-lg md:text-4xl font-bold mb-0 md:mb-1">10k+</h3>
+              <p className="text-green-100 text-[10px] md:text-sm leading-tight px-1">Complaints Registered</p>
           </div>
-          <div className="w-48 h-48 mx-auto bg-green-600 rounded-full flex flex-col items-center justify-center text-white shadow-xl border-4 border-green-100 hover:scale-105 transition-transform">
-              <h3 className="text-4xl font-bold mb-1">8.5k+</h3>
-              <p className="text-green-100 text-sm">Issues Resolved</p>
+          <div className="w-20 h-20 md:w-48 md:h-48 bg-green-600 rounded-full flex flex-col items-center justify-center text-white shadow-xl border-2 md:border-4 border-green-100 hover:scale-105 transition-transform">
+              <h3 className="text-lg md:text-4xl font-bold mb-0 md:mb-1">8.5k+</h3>
+              <p className="text-green-100 text-[10px] md:text-sm leading-tight px-1">Issues Resolved</p>
           </div>
-          <div className="w-48 h-48 mx-auto bg-green-600 rounded-full flex flex-col items-center justify-center text-white shadow-xl border-4 border-green-100 hover:scale-105 transition-transform">
-              <h3 className="text-4xl font-bold mb-1">50+</h3>
-              <p className="text-green-100 text-sm">Cities Covered</p>
+          <div className="w-20 h-20 md:w-48 md:h-48 bg-green-600 rounded-full flex flex-col items-center justify-center text-white shadow-xl border-2 md:border-4 border-green-100 hover:scale-105 transition-transform">
+              <h3 className="text-lg md:text-4xl font-bold mb-0 md:mb-1">50+</h3>
+              <p className="text-green-100 text-[10px] md:text-sm leading-tight px-1">Cities Covered</p>
           </div>
-          <div className="w-48 h-48 mx-auto bg-green-600 rounded-full flex flex-col items-center justify-center text-white shadow-xl border-4 border-green-100 hover:scale-105 transition-transform">
-              <h3 className="text-4xl font-bold mb-1">4.8/5</h3>
-              <p className="text-green-100 text-sm">Citizen Satisfaction</p>
+          <div className="w-20 h-20 md:w-48 md:h-48 bg-green-600 rounded-full flex flex-col items-center justify-center text-white shadow-xl border-2 md:border-4 border-green-100 hover:scale-105 transition-transform">
+              <h3 className="text-lg md:text-4xl font-bold mb-0 md:mb-1">4.8/5</h3>
+              <p className="text-green-100 text-[10px] md:text-sm leading-tight px-1">Citizen Satisfaction</p>
           </div>
       </div>
   </section>

@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import AdminDashboard from './AdminDashboard'
 
 const AdminProfile = () => {
+  const navigate = useNavigate();
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
-  const [profileImage, setProfileImage] = useState(null);
+  const [profileImage, setProfileImage] = useState(localStorage.getItem('userProfileImage'));
   const [isEditing, setIsEditing] = useState(false);
-  const [admin, setAdmin] = useState({
-    name: 'Super Admin',
-    adminId: 'ADM-001',
-    role: 'System Administrator',
-    email: 'admin@civic.gov.in',
-    lastLogin: 'Today, 10:30 AM'
+  const [admin, setAdmin] = useState(() => {
+    const savedUser = localStorage.getItem('currentUser');
+    return savedUser ? JSON.parse(savedUser) : {
+      name: 'Super Admin',
+      adminId: 'ADM-001',
+      role: 'System Administrator',
+      email: 'admin@civic.gov.in',
+      lastLogin: 'Today, 10:30 AM'
+    };
   });
   const [editForm, setEditForm] = useState(admin);
 
@@ -26,7 +31,12 @@ const AdminProfile = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setProfileImage(URL.createObjectURL(file));
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileImage(reader.result);
+        localStorage.setItem('userProfileImage', reader.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -37,6 +47,7 @@ const AdminProfile = () => {
 
   const handleSave = () => {
     setAdmin(editForm);
+    localStorage.setItem('currentUser', JSON.stringify(editForm));
     setIsEditing(false);
   };
 
@@ -47,6 +58,13 @@ const AdminProfile = () => {
   return (
     <div className="min-h-screen w-full bg-green-50 dark:bg-gray-900 transition-colors duration-300 [@media(display-mode:standalone)]:pb-24">
       <Navbar onOpenDashboard={() => setIsDashboardOpen(true)} />
+      <div className="max-w-4xl mx-auto px-4 md:px-8 mt-4 flex justify-start">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition font-medium bg-gradient-to-r from-gray-100/50 to-gray-200/50 dark:from-gray-800/50 dark:to-gray-700/50 backdrop-blur-md px-4 py-2 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg> Back
+        </button>
+      </div>
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-8">Admin Profile</h1>
         
@@ -131,6 +149,36 @@ const AdminProfile = () => {
                         <h4 className="text-3xl font-bold text-red-600">{systemAnalytics.pendingApprovals}</h4>
                         <p className="text-sm text-gray-600 mt-1">Pending Approvals</p>
                     </div>
+                </div>
+            </div>
+
+            <div className="mt-10 border-t border-gray-100 dark:border-gray-700 pt-8">
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6">Support & Settings</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                    <button className="p-4 bg-white dark:bg-gray-700 rounded-xl shadow-sm flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-600 transition text-left">
+                        <span className="font-medium text-gray-700 dark:text-gray-200">Help & Support</span>
+                        <span className="text-gray-400">›</span>
+                    </button>
+                    <button className="p-4 bg-white dark:bg-gray-700 rounded-xl shadow-sm flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-600 transition text-left">
+                        <span className="font-medium text-gray-700 dark:text-gray-200">FAQs</span>
+                        <span className="text-gray-400">›</span>
+                    </button>
+                    <Link to="/terms" className="p-4 bg-white dark:bg-gray-700 rounded-xl shadow-sm flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-600 transition">
+                        <span className="font-medium text-gray-700 dark:text-gray-200">Terms & Conditions</span>
+                        <span className="text-gray-400">›</span>
+                    </Link>
+                    <Link to="/privacy-policy" className="p-4 bg-white dark:bg-gray-700 rounded-xl shadow-sm flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-600 transition">
+                        <span className="font-medium text-gray-700 dark:text-gray-200">Privacy Policy</span>
+                        <span className="text-gray-400">›</span>
+                    </Link>
+                    <button className="p-4 bg-white dark:bg-gray-700 rounded-xl shadow-sm flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-600 transition text-left">
+                        <span className="font-medium text-gray-700 dark:text-gray-200">App Permissions</span>
+                        <span className="text-gray-400">›</span>
+                    </button>
+                    <button className="p-4 bg-white dark:bg-gray-700 rounded-xl shadow-sm flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-600 transition text-left">
+                        <span className="font-medium text-gray-700 dark:text-gray-200">Licenses</span>
+                        <span className="text-gray-400">›</span>
+                    </button>
                 </div>
             </div>
         </div>

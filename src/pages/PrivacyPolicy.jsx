@@ -1,11 +1,20 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useNavigate } from 'react-router-dom'
 
 const PrivacyPolicy = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-green-50">
       <Navbar />
+      <div className="max-w-4xl mx-auto px-8 mt-4 flex justify-start">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-gray-600 hover:text-green-600 transition font-medium bg-gradient-to-r from-gray-100/50 to-gray-200/50 backdrop-blur-md px-4 py-2 rounded-xl shadow-sm border border-gray-200/50 hover:bg-gray-200/50">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg> Back
+        </button>
+      </div>
       <div className="max-w-4xl mx-auto p-8 bg-white my-10 rounded-3xl shadow-lg">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">Privacy Policy</h1>
         <div className="space-y-4 text-gray-600">

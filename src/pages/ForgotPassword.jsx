@@ -1,11 +1,19 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const ForgotPassword = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-green-50">
       <Navbar />
+      <div className="max-w-md mx-auto px-4 mt-4 flex justify-start">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-gray-600 hover:text-green-600 transition font-medium bg-gradient-to-r from-gray-100/50 to-gray-200/50 backdrop-blur-md px-4 py-2 rounded-xl shadow-sm border border-gray-200/50 hover:bg-gray-200/50">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg> Back
+        </button>
+      </div>
       <div className='flex items-center justify-center py-20'>
         <div className="bg-white rounded-3xl p-8 shadow-lg relative overflow-hidden w-full max-w-md">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">Forgot Password?</h2>

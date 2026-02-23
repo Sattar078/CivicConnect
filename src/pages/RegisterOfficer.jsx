@@ -12,14 +12,24 @@ const RegisterOfficer = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
+        const officer = {
+            name: fullName,
+            badgeId: badgeId,
+            email: email,
+            rank: 'Zone Officer',
+            zone: 'North Zone',
+            phone: '+91 98765 00001',
+            joinedDate: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        };
+        localStorage.setItem('currentUser', JSON.stringify(officer));
         setError(null);
-        navigate('/officer-home');
+        navigate('/login-officer');
     };
 
     return (
         <div className="min-h-screen bg-green-50 dark:bg-gray-900 flex items-center justify-center p-6 transition-colors duration-300">
             <div className="max-w-4xl w-full bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row transition-colors duration-300">
-                <div className="md:w-1/2 bg-gradient-to-br from-green-600 to-green-400 p-10 text-white flex flex-col justify-center items-center relative overflow-hidden">
+                <div className="md:w-1/2 bg-linear-to-br from-green-600 to-green-400 p-10 text-white flex flex-col justify-center items-center relative overflow-hidden">
                     <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white mb-6 shadow-xl border-2 border-white/30 p-4">
                         <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
                     </div>

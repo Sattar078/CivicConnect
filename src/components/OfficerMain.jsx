@@ -4,10 +4,15 @@ import { Link } from 'react-router-dom'
 const OfficerMain = ({ onOpenDashboard }) => {
   return (
     <div className="w-full dark:bg-gray-900 transition-colors duration-300 [@media(display-mode:standalone)]:pb-24">
-      <section className="bg-green-50 dark:bg-gray-900 min-h-[90vh] flex items-center justify-center px-6 transition-colors duration-300">
+      <section className="bg-green-50 dark:bg-gray-900 py-12 md:py-20 flex items-center justify-center px-6 transition-colors duration-300">
         <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10 items-center">
           
           <div className="space-y-6 animate-fadeIn">
+            <div className="flex items-center gap-4 text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
+              <span className="flex items-center gap-1"><span className="w-2 h-2 bg-green-500 rounded-full"></span> On Duty</span>
+              <span>•</span>
+              <span>{new Date().toLocaleDateString()}</span>
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white leading-tight">
               Welcome, <span className="text-green-600">Officer</span>
             </h1>
@@ -37,6 +42,13 @@ const OfficerMain = ({ onOpenDashboard }) => {
               <h4 className="font-semibold text-gray-800 dark:text-white">Performance</h4>
               <p className="text-gray-500 dark:text-gray-300 text-sm mt-1">
                 95% resolution rate this month.
+              </p>
+            </div>
+
+            <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-2xl shadow-md border border-red-100 dark:border-red-800 mt-4">
+              <h4 className="font-semibold text-red-700 dark:text-red-400">Urgent Alerts</h4>
+              <p className="text-red-600 dark:text-red-300 text-sm mt-1">
+                2 High Priority incidents reported in your zone.
               </p>
             </div>
 
