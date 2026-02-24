@@ -1,17 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const ComplaintModal = ({ onClose, onSubmit }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    mobile: '',
+    email: '',
+    location: '',
+    category: '',
+    photo: null
+  });
+  const [errors, setErrors] = useState({});
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const categorySelect = e.target.querySelector('select');
     
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.mobile.trim()) newErrors.mobile = 'Mobile number is required';
+    else if (!/^\d{10}$/.test(formData.mobile)) newErrors.mobile = 'Mobile number must be 10 digits';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Invalid email format';
+    if (!formData.location.trim()) newErrors.location = 'Location is required';
+    if (!formData.category) newErrors.category = 'Category is required';
+    if (!formData.photo) newErrors.photo = 'Photo evidence is required';
+
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) return;
+
     // Generate mock details
     const details = {
       id: `#CC-${Math.floor(100000 + Math.random() * 900000)}`,
       date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
       officer: "Rajesh Kumar (Zone Officer)",
       officerContact: "+91 98765 43210",
-      category: categorySelect ? categorySelect.value : "General Issue"
+      category: formData.category
     };
 
     onSubmit(details);
@@ -28,34 +50,40 @@ const ComplaintModal = ({ onClose, onSubmit }) => {
         <h2 className="text-2xl font-bold mb-6 text-green-600 text-center">Register Complaint</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Civilian Name</label>
-            <input type="text" placeholder="Enter Name" className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white" />
+            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Civilian Name <span className="text-red-500">*</span></label>
+            <input type="text" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="Enter Name" className={`w-full p-3 border ${errors.name ? 'border-red-500' : 'border-gray-300'} dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white`} />
+            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
           </div>
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Mobile No.</label>
-            <input type="tel" placeholder="Enter Mobile No." className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white" />
+            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Mobile No. <span className="text-red-500">*</span></label>
+            <input type="tel" value={formData.mobile} onChange={(e) => setFormData({...formData, mobile: e.target.value})} placeholder="Enter Mobile No." className={`w-full p-3 border ${errors.mobile ? 'border-red-500' : 'border-gray-300'} dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white`} />
+            {errors.mobile && <p className="text-red-500 text-xs mt-1">{errors.mobile}</p>}
           </div>
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Email</label>
-            <input type="email" placeholder="Enter Email" className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white" />
+            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Email <span className="text-red-500">*</span></label>
+            <input type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="Enter Email" className={`w-full p-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white`} />
+            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
           </div>
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Location</label>
-            <input type="text" placeholder="Enter Location" className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white" />
+            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Location <span className="text-red-500">*</span></label>
+            <input type="text" value={formData.location} onChange={(e) => setFormData({...formData, location: e.target.value})} placeholder="Enter Location" className={`w-full p-3 border ${errors.location ? 'border-red-500' : 'border-gray-300'} dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white`} />
+            {errors.location && <p className="text-red-500 text-xs mt-1">{errors.location}</p>}
           </div>
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Issue Category</label>
-            <select className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white dark:bg-gray-700 dark:text-white">
+            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Issue Category <span className="text-red-500">*</span></label>
+            <select value={formData.category} onChange={(e) => setFormData({...formData, category: e.target.value})} className={`w-full p-3 border ${errors.category ? 'border-red-500' : 'border-gray-300'} dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white dark:bg-gray-700 dark:text-white`}>
               <option value="">Select Category</option>
               <option value="road">Road</option>
               <option value="water">Water</option>
               <option value="electricity">Electricity</option>
               <option value="other">Other</option>
             </select>
+            {errors.category && <p className="text-red-500 text-xs mt-1">{errors.category}</p>}
           </div>
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Photo of Issue</label>
-            <input type="file" className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-gray-300" />
+            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Photo of Issue <span className="text-red-500">*</span></label>
+            <input type="file" onChange={(e) => setFormData({...formData, photo: e.target.files[0]})} className={`w-full p-2 border ${errors.photo ? 'border-red-500' : 'border-gray-300'} dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-gray-300`} />
+            {errors.photo && <p className="text-red-500 text-xs mt-1">{errors.photo}</p>}
           </div>
           <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition duration-300">
             Submit Complaint

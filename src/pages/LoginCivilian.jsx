@@ -6,9 +6,18 @@ const LoginCivilian = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({});
 
   const handleLogin = (e) => {
     e.preventDefault();
+    const newErrors = {};
+    if (!email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Invalid email format';
+    if (!password) newErrors.password = 'Password is required';
+
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) return;
+
     const existingUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     const user = {
         name: existingUser.name || 'Rahul Sharma',
@@ -25,7 +34,7 @@ const LoginCivilian = () => {
   return (
     <div className="min-h-screen bg-green-50 dark:bg-gray-900 flex items-center justify-center p-6 transition-colors duration-300">
       <div className="max-w-4xl w-full bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row transition-colors duration-300">
-        <div className="md:w-1/2 bg-linear-to-br from-green-600 to-green-400 p-10 text-white flex flex-col justify-center items-center relative overflow-hidden">
+        <div className="md:w-1/2 bg-gradient-to-br from-green-600 to-green-400 p-10 text-white flex flex-col justify-center items-center relative overflow-hidden">
           <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white mb-6 shadow-xl border-2 border-white/30 p-4">
             <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
           </div>
@@ -45,21 +54,23 @@ const LoginCivilian = () => {
               <label className="block text-gray-700 dark:text-gray-300">Email</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-4 text-gray-400" size={20} />
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full mt-1 p-3 pl-10 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 dark:bg-gray-700 dark:text-white" placeholder="Enter your email" required />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className={`w-full mt-1 p-3 pl-10 border ${errors.email ? 'border-red-500' : 'border-gray-300'} dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 dark:bg-gray-700 dark:text-white`} placeholder="Enter your email" />
               </div>
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
             <div>
               <label className="block text-gray-700 dark:text-gray-300">Password</label>
               <div className="relative">
                 <Lock className="absolute left-3 top-4 text-gray-400" size={20} />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full mt-1 p-3 pl-10 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 dark:bg-gray-700 dark:text-white" placeholder="Enter your password" required />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className={`w-full mt-1 p-3 pl-10 border ${errors.password ? 'border-red-500' : 'border-gray-300'} dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 dark:bg-gray-700 dark:text-white`} placeholder="Enter your password" />
               </div>
+              {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
             </div>
             <Link to="/forgot-password"><span className="text-sm text-green-600 block mt-2 hover:underline cursor-pointer">forgot password?</span></Link>
             <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl transition shadow-md font-bold text-lg">Login</button>
             <div className='text-center pt-2'>
                <p className="text-gray-600 dark:text-gray-400 mb-2">Don't have an account?</p>
-               <Link to="/register-civilian"><button className="text-green-600 font-bold hover:underline">Create New Account</button></Link>
+               <Link to="/register-civilian" className="text-green-600 font-bold hover:underline">Create New Account</Link>
             </div>
           </form>
         </div>

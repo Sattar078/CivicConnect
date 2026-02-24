@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Mail, Lock, Chrome, ArrowLeft, Building2 } from 'lucide-react'
 
@@ -8,8 +8,20 @@ const Login = () =>
   const location = useLocation();
   const role = location.state?.role || 'civilian';
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({});
+
   const handleLogin = (e) => {
     e.preventDefault();
+    const newErrors = {};
+    if (!email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Invalid email format';
+    if (!password) newErrors.password = 'Password is required';
+
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) return;
+
     if (role === 'admin') {
       navigate('/admin-dashboard');
     } else {
@@ -49,15 +61,17 @@ const Login = () =>
             <label htmlFor="email" className="block text-gray-700">Email</label>
             <div className="relative">
               <Mail className="absolute left-3 top-4 text-gray-400" size={20} />
-              <input type="email" id="email" className="w-full mt-1 p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Enter your email" required />
+              <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className={`w-full mt-1 p-3 pl-10 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600`} placeholder="Enter your email" />
             </div>
+            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
           </div>
             <div>
               <label htmlFor="password" className="block text-gray-700">Password</label>
               <div className="relative">
                 <Lock className="absolute left-3 top-4 text-gray-400" size={20} />
-                <input type="password" id="password" className="w-full mt-1 p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Enter your password" required />
+                <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className={`w-full mt-1 p-3 pl-10 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600`} placeholder="Enter your password" />
               </div>
+              {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
             </div>
             <Link to="/forgot-password"><span className="text-sm text-green-600 block mt-2 hover:underline cursor-pointer hover:text-black">forgot password?</span></Link>
             <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl transition shadow-md font-bold text-lg">
@@ -75,7 +89,7 @@ const Login = () =>
             <hr className="border-gray-300" />
             <div className='text-center pt-2'>
                <p className="text-gray-600 mb-2">Don't have an account?</p>
-               <Link to="/register"><button className="text-green-600 font-bold hover:underline">Create New Account</button></Link>
+               <Link to="/register" className="text-green-600 font-bold hover:underline">Create New Account</Link>
             </div>
             
           </form>
